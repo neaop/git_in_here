@@ -1,0 +1,14 @@
+what is git?
+why use git?
+set up
+simple commands:
+    stage
+    commit
+    push
+    pull
+gitignore
+branching
+merging
+conflicts
+ssh
+
