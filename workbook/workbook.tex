@@ -1,9 +1,19 @@
 \documentclass[11pt, a4paper, draft, titlepage]{article}
+\usepackage{hyperref}
 
 \begin{document}
 
-\title{ Git In Here\\ \large An Unofficial Introduction \\To Git Source
-Control Management } \author{Sam Dixon} \date{2018} \maketitle
+\title{ Git In Here\\
+\large An Unofficial Introduction 
+\\To Git Source Control Management
+}
+
+\author{Sam Dixon\\
+\texttt{\href{mailto:s.dixon@napier.ac.uk}{s.dixon@napier.ac.uk}}
+}
+
+\date{2018} 
+\maketitle
 
 \begin{abstract} The purpose of this documentation is to provide a simple and
 concise introduction to the use and understanding of the Git source control
@@ -20,27 +30,86 @@ users.
 
 This guide and its partner presentation are released under the MIT license,
 allowing you to alter, amend and redistribute them as you see fit - provided
-attribution to the original author is maintained.  \end{abstract}
+attribution to the original author is maintained. 
+\end{abstract}
+
 
 \tableofcontents 
 \pagebreak
 
 
 \section{What Is Version Control?}
+Perhaps your have heard terms like version control or Git slung about, either
+praising there usefulness or despairing at there complexity. 
+Regardless about the context, you may have asked yourself: 
+``Why should I bother''.
+Maybe you save all your work on Dropbox or Google Drive, or you might have a
+handy-dandy USB key-chain that you never leave home without that you use to
+ensure all your projects are up-to-date and accessible.
+Regardless of your previous knowledge of Version Control, or the current
+manner you use to store and access your work, this document aims to highlight
+the benefits of using Version Control, and hopefully motivate you to learn and
+use the tolls described henceforth.
 
-\subsection{Background} Version Control (also known as Reversion Control or
-Source Control) is a system that tracks and manages changes to a project.  A
-project can be any collection of files on a PC, from a program, website or
-even a plain text document, Version Control can be utilised to organise and
-control any alterations made to a project.  A number of Version Control
-Systems (VCSs) are available, each with their own benefits, features, and
-unique quirks; Git, CVS, Subversion, and Mercurial are just a few of the more
-commonly used VCSs.
+A Version Control System (also known as Reversion Control, Source Control, or
+VCS) is a tool that tracks and manages changes made to a project.  
+A project can be any collection of folders and files on a PC, from program
+source-code, website content and style sheets, or even a simple text report,
+Version Control can be utilised to organise and control any alterations made
+to the files within a project. 
+A number of Version Control Systems (VCSs) are available, each with their own
+benefits, features, and unique quirks; Git, CVS, Subversion, and Mercurial are
+just a few of the more popular VCSs.
 
-\subsection{Key Terms} VCSs may be diverse in style and functionality, but
-there does exist some shared features across multiple systems. While the
-terminology may differ, the following list contains some of the most common
-features present in the majority of VCSs:
+
+\subsection{Key Features}
+It is difficult to justify the effort of learning a new tool if you do not
+know what it is capable of.
+While different VCSs may offer variations, the following is a list of key
+features typical of VCSs:
+\begin{itemize}
+\item History\\
+VCSs track changes that have been made to a file and who authored them.
+This timeline of changes can let you see when and how files have been edited,
+helping you locate when a bug was introduced to project or which team members
+worked on a particular feature.
+\item Reversion\\
+VCSs don't just let you track a project's history, they let you revisit it. 
+A file can be reverted to its previous remove a change, or the entire project
+can be rolled back to a previous version.
+\item Branching\\
+VCSs allow for multiple versions or branches of a project to exist
+simultaneously. 
+These branches allow a project to be developed asynchronously, one branch can
+be dedicated to patching bugs or adding featers to a system, while another
+branch consists only of stable code that can be released to the public.
+\item Tagging\\
+VCSs provide a system that allows users to mark certain points in a project's
+history as important.
+This tagging system can be used in a number of ways; from notify project
+releases (version 1.0, version 2.0, ...) to marking changes that introduced
+bugs, or simply to place a bookmark in you project's history.
+\item Collaboration\\
+Arguably the most important feature of a VCS is that it allows multiple
+parties work on a single project at the same time.
+The manner in which a VCS implements collaboration can vary drastically, but
+systems will provide users a way in which they can edit files without the
+fear of erasing one another's work or overwriting important data.
+\end{itemize}
+
+
+There may be many flavours of VCS, each with their own functionality.,
+documentation, and cult following, but each system will generally boil down to
+one of three different implementations; Local, Centralised, or Distributed.
+
+\subsection{Local Version Control System}
+A local VCS is one that exists only on your machine. If you hav
+
+\subsection{Key Terms} 
+VCSs may be diverse in style and functionality, but there does exist some
+shared features across multiple implementations. 
+While the terminology may differ, the following list contains some of the most
+common features present in the VCSs:
 
 \begin{itemize} 
 \item Repository \\ The folder or directory that contains the
@@ -58,15 +127,16 @@ Note: the previous list is just a simple summary of terms, each feature and
 its use will be described in richer detail later in this guide.
 
 
-\section{Why use Version Control?} To a novice user, the previous section's
-descriptions and terms may sound convoluted and complicated, and the described
-functionality might be achieved with a USB memory-sticks or cloud storage
-solutions - so why should you bother to learn this new system?
 
+\section{Why Use Version Control?} 
+To a novice user, the previous section's descriptions and terms may sound
+convoluted and complicated, and the described functionality might be achieved
+with USB pen drives, portable hard drives, or cloud storage solutions - so why
+should you bother to learn this new system?  
 You might find version control useful if you have ever found yourself doing
-any of the following; 
+any of the following;
 \begin{itemize}
-\item Create multiple copies of a folder "In case I need the old version".
+\item Created multiple copies of a project, ``In case I need the old version''.
 \item Copied work on to a USB drive, Dropbox, or Google Drive to move it from
 one PC to another.
 \item Copied code into an email or instant message to send it to a friend or
@@ -77,43 +147,56 @@ failing.
 \end{itemize}
 
 All the experiences listed, and more, can be avoided via the correct practice
-of version control, potentially saving you time and effort when working on
+of version control - potentially saving you time and effort when working on
 projects of any size.
 
 Whether you need a system that allows you to mange multiple versions or drafts
 of a project, lets you work on a project across multiple devices, or provides a
-secure off-site back up, version control can provide all these features and more
-in single system.
+off-site back up, version control can provide these features and more in
+single system.
 
 
-\section{Why Git?} As previously stated, there is a wide range of VCS systems
-to choose from, so why does this guide focus on Git?
+\section{Why Git?} 
+As previously stated, there is a wide range of VCS systems to choose from, so
+why does this guide focus on Git?
+
 
 Git Source Control Manager (SCM) is a free, open-source, distributed VCS
 primarily designed to be used for the management of source-code and
 programming projects.  The first version of Git was written in 2005 by Linus
 Torvalds (creator of the Linux kernel), and has since been adopted as the most
-commonly used source control system among developers.  Git is not only popular
-amongst open-source developers, many industry leading corporations and
-organisations also utilise Git as their preferred version control system.
-Examples of companies that use Git include; Google, Intel, Microsoft, Amazon,
-and Apple, to name a few.
+commonly used source control system among developers [cite].
 
+Git is not only popular amongst open-source developers, many industry leading
+corporations and organisations also utilise Git as their preferred version
+control system.  Examples of companies that use Git include; Google, Intel,
+Microsoft, Amazon, and Apple, to name a few.
 
-The reasons this guide teaches Git, rather than another VCS are;
+The following is a list of some of the reaons you might choose to learn git
+over another VCS:
 \begin{itemize} 
-\item Freedom \\ Git is free to use and open-source, meaning
-the source code is publicly available to view.  
-\item Multiplatform \\ While
-it was primarily designed to be used with Linux distributions, Git works just
-as well on Windows and macOS, with all the same commands and functionality.
-\item Distributed \\ Git allows you to maintain your repositories both on your
-local machine or on a remote server maintained by a large number of providers
-(You can even host your own personal Git server).  
-\item Popularity \\ Git has
-been recognized as one of, if not the most popular VCS among developers and
-organisations, making Git an attractive skill to learn.  
+\item Cost \\ 
+Git is free to use and open-source, meaning the source code is publicly
+available to view.  
+\item Multiplatform \\ 
+While it was primarily designed to be used with Linux distributions, Git works
+just as well on Windows and macOS, with all the same commands and
+functionality.
+\item Distributed \\ 
+Git allows you to maintain your repositories both on your local machine or on
+a remote server maintained by a large number of providers (You can even host
+your own personal Git server). This means you do not need an active internet
+connection or constant "check-in" while you are working on a project.
+\item Speed \\
+Git was purposly desinged to be light-weithgt to run and rapid in its
+execution.
+\item Popularity \\ 
+Git has been recognized as one of, if not the most popular VCS among
+developers and organisations, meaning there is a wealth of documentation
+available for the learning and use of Git. It's popularity can also make Git an
+attractive skill in terms of employment.
 \end{itemize}
+
 
 \subsection{Git Tools} There exists a number of tools, plug-ins and add-ons
 that claim to optimise or streamline the use of Git.  Tools like GitKraken,
