@@ -165,24 +165,119 @@ developers and organisations, meaning there is a wealth of documentation
 available for the learning and use of Git. 
 It's popularity can also make Git an attractive skill in terms of
 employability.
+\item Tools \\
+While git is designed to be used from a terminal, a number of GUIs and
+visualisers have been developed to provide users with an alternative interface
+when using Git.
 \end{itemize}
 
 
-\subsection{Git Tools} There exists a number of tools, plug-ins and add-ons
-that can aid users by optimising or streamlining the use of Git.  
-Tools like GitKraken,  SourceTree, GitHub Desktop, and Tower all
-provide visual Graphical User Interfaces (GUIs) - providing users with an
-alternative to the typical terminal interface.
 
 \section{Setting Up Git}
+This section will describe the steps required to get Git operating on your own
+machine. 
+
+
+\subsection{Installation}
+Depending on your opearting system, the process of installing git can vary,
+below is a quick and easy install guide for Windows, macOS and Linux
+distrobutions.
+
+\subsubsection*{Windows}
+The simplest way to install Git on windows is to download the official Git-Bash
+client directly from: \url{https://git-scm.com/download/win}.
+
+Many Git GUIs and visualisers will also come packaged with Git-Bash when they
+installed.
+
+\subsubsection*{macOS}
+A macOS version of the git installer is available at:
+\url{http://git-scm.com/download/mac}.
+Much like Windows, many of the GUIs desinged for Git will also install the
+required Git-Bash.
+
+\subsubsection*{Linux}
+Depending on your distribution, Git may already come pre-installed on your
+machine, otherwise it can be installed simply using your package manager.
+The Git-SCM websit provides detailed installation instruction, for each
+flavour of Linux: \url{https://git-scm.com/download/linux}
+
+
+\subsection{Git Providers}
+Due to Git's distributed nature you are perfectly able to install Git and
+experience all of it features and functions. 
+If however you want to be able to
+share your projects with your peers, or access your code from anywhere in the
+world you will need to host your repositories on a remote server.
+
+A number of organisations will allow you to host your projects on their
+servers, and while the underlying Git infrastructure may be identical, the
+providers themselves may offer you additional services or features.
+
+It is worth doing a little reaserch to find which provider will work best for
+you, but some of the more common services include
+\href{https://github.com}{GitHub}, \href{https://gitlab.com}{GitLab}, and
+\href{https://bitbucket.org}{Bitbucket}.
+
+
+\subsection{Git Configuration}
+Once you have Git installed on your machine you will need to perform a few
+configuration steps in order to use Git at its full potential.
+
+\subsubsection*{Git Identity}
+In order to create commits, Git requires two pieces of information, a user
+name and email.
+In order to set you name and email the follwing two commands can be run:
+
+\texttt{git config --global user.name "John Smith"}
+
+\texttt{git config --global user.email john.smith@email.com}
+
+\noindent
+Lets go over the structure of the commands, and what they did.
+
+\begin {itemize}
+\item
+All git commands a prefaced by the word {\tt git}, this identifies that
+following command is to be run by Git, rather than another application
+installed on the computer.
+
+\item
+The word {\tt config} is used with any commands that relate to the
+configuration or setup of git.
+
+\item
+The {\tt --global} flag means that the following configuration will be applied
+by default to all git repositories on the machine.
+If you wanted to use a different email or username for a repository, you can
+simply run the previous commands whil within the project directory, ommiting
+the {\tt --global} flag.
+
+\item
+Obviously, the {\tt user.name} and {\tt user.email} commands alter the current
+Git identities name and email.
+If you are working on publicly visible code and are uncomfortable with
+revealing your name you can use a pseudonym, and many Git providers will
+assign you with an anonymous email which you can use for publishing commits.
+\end{itemize}
+
+
 
 \section{Creating A Repository}
 
+
+
 \section{Staging Files}
+
+
 
 \section{Committing Changes}
 
+
+
 \section{Pushing}
+
+
 
 
 \end{document}
