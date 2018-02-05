@@ -1,12 +1,29 @@
-\documentclass[11pt, a4paper, draft, titlepage]{article}
+\documentclass[10pt, a4paper, titlepage]{article}
 \usepackage{hyperref}
-
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{lmodern}  % for bold teletype font
+\usepackage{amsmath}  % for \hookrightarrow
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\lstset{
+    basicstyle=\ttfamily,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}    
+    }
 \begin{document}
 
-\title{ Git In Here\\
-\large An Unofficial Introduction 
-\\To Git Source Control Management
+\title{ 
+Git In Here\\
+\large An Unofficial Introduction\\
+To Git Source Control Management\\
+\includegraphics[scale=0.4]{../res/git_icon}\\
 }
+
 
 \author{Sam Dixon\\
 \texttt{\href{mailto:s.dixon@napier.ac.uk}{s.dixon@napier.ac.uk}}
@@ -81,7 +98,7 @@ can be rolled back to a previous version.
 VCSs allow for multiple versions or branches of a project to exist
 simultaneously. 
 These branches allow a project to be developed asynchronously, one branch can
-be dedicated to patching bugs or adding featers to a system, while another
+be dedicated to patching bugs or adding features to a system, while another
 branch consists only of stable code that can be released to the public.
 \item Tagging\\
 VCSs provide a system that allows users to mark certain points in a project's
@@ -139,14 +156,15 @@ corporations and organisations also utilise Git as their preferred version
 control system.  Examples of companies that use Git include; Google, Intel,
 Microsoft, Amazon, and Apple, to name a few.
 
-The following is a list of some of the reaons you might choose to learn Git
+\subsection{Key Features}
+The following is a list of some of the reasons you might choose to learn Git
 over another VCS:
 \begin{itemize} 
 \item Cost \\
 Git is completely free to download and use, regardless of the size your
 project or team.  
 While some Git providers may charge you to host a project on
-their hardware, there are plenty of free alternatives, and there is notheing
+their hardware, there are plenty of free alternatives, and there is nothing
 stopping you running your own personal Git server.  
 \item Multiplatform \\ 
 While it was primarily designed to be used with Linux distributions, Git works
@@ -179,27 +197,27 @@ machine.
 
 
 \subsection{Installation}
-Depending on your opearting system, the process of installing git can vary,
+Depending on your operating system, the process of installing git can vary,
 below is a quick and easy install guide for Windows, macOS and Linux
-distrobutions.
+distributions.
 
-\subsubsection*{Windows}
+\subsubsection{Windows}
 The simplest way to install Git on windows is to download the official Git-Bash
 client directly from: \url{https://git-scm.com/download/win}.
 
 Many Git GUIs and visualisers will also come packaged with Git-Bash when they
 installed.
 
-\subsubsection*{macOS}
+\subsubsection{macOS}
 A macOS version of the git installer is available at:
-\url{http://git-scm.com/download/mac}.
-Much like Windows, many of the GUIs desinged for Git will also install the
+\url{https://git-scm.com/download/mac}.
+Much like Windows, many of the GUIs designed for Git will also install the
 required Git-Bash.
 
-\subsubsection*{Linux}
+\subsubsection{Linux}
 Depending on your distribution, Git may already come pre-installed on your
 machine, otherwise it can be installed simply using your package manager.
-The Git-SCM websit provides detailed installation instruction, for each
+The Git-SCM website provides detailed installation instruction, for each
 flavour of Linux: \url{https://git-scm.com/download/linux}
 
 
@@ -214,7 +232,7 @@ A number of organisations will allow you to host your projects on their
 servers, and while the underlying Git infrastructure may be identical, the
 providers themselves may offer you additional services or features.
 
-It is worth doing a little reaserch to find which provider will work best for
+It is worth doing a little research to find which provider will work best for
 you, but some of the more common services include
 \href{https://github.com}{GitHub}, \href{https://gitlab.com}{GitLab}, and
 \href{https://bitbucket.org}{Bitbucket}.
@@ -224,14 +242,18 @@ you, but some of the more common services include
 Once you have Git installed on your machine you will need to perform a few
 configuration steps in order to use Git at its full potential.
 
-\subsubsection*{Git Identity}
+\subsubsection{Git Identity}
 In order to create commits, Git requires two pieces of information, a user
-name and email.
-In order to set you name and email the follwing two commands can be run:
+name and email, without setting these varibles you will be unable to publish
+any changes you make with Git.
+In order to set you name and email the following two commands can be run:
 
-\texttt{git config --global user.name "John Smith"}
+\begin{lstlisting}[label=lst_config_user,
+caption=Updating the default Git identity]
+$ git config --global user.name "John Smith"
+$ git config --global user.email john.smith@email.com
+\end{lstlisting}
 
-\texttt{git config --global user.email john.smith@email.com}
 
 \noindent
 Lets go over the structure of the commands, and what they did.
@@ -250,7 +272,7 @@ configuration or setup of git.
 The {\tt --global} flag means that the following configuration will be applied
 by default to all git repositories on the machine.
 If you wanted to use a different email or username for a repository, you can
-simply run the previous commands whil within the project directory, ommiting
+simply run the previous commands while within the project directory, omitting
 the {\tt --global} flag.
 
 \item
@@ -261,6 +283,10 @@ revealing your name you can use a pseudonym, and many Git providers will
 assign you with an anonymous email which you can use for publishing commits.
 \end{itemize}
 
+\begin{lstlisting}[label=lst_config_edititor,
+caption=Updating the default Git identity]
+$ git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe'-multiInst -nosession" \end{lstlisting}
+\subsubsection{Text Editor}
 
 
 \section{Creating A Repository}
@@ -276,7 +302,6 @@ assign you with an anonymous email which you can use for publishing commits.
 
 
 \section{Pushing}
-
 
 
 
