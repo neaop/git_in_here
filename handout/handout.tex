@@ -1,28 +1,15 @@
-\documentclass[10pt, a4paper, titlepage]{article}
-\usepackage{hyperref}
-\usepackage{graphicx}
-\usepackage{color}
-\usepackage{xcolor}
-\usepackage{listings}
-\usepackage{lmodern}  % for bold teletype font
-\usepackage{amsmath}  % for \hookrightarrow
-\usepackage{caption}
-\DeclareCaptionFont{white}{\color{white}}
-\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
-\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
-\lstset{
-    basicstyle=\ttfamily,
-    breaklines=true,
-    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}    
-    }
+\documentclass[11pt, a4paper, titlepage]{article}
+\usepackage{handout}
+
+
 \begin{document}
 
 \title{ 
-Git In Here\\
-\large An Unofficial Introduction\\
-To Git Source Control Management\\
-\includegraphics[scale=0.4]{../res/git_icon}\\
-}
+    \LARGE Git In Here\\
+    \Large An Unofficial Introduction\\
+    To Git Source Control Management\\
+    \bigbreak
+    \includegraphics[scale=0.4]{../res/git_icon}}
 
 
 \author{Sam Dixon\\
@@ -51,8 +38,10 @@ attribution to the original author is maintained.
 \end{abstract}
 
 
+
 \tableofcontents 
 \pagebreak
+
 
 
 \section{What Is Version Control?}
@@ -79,11 +68,12 @@ benefits, features, and unique quirks; Git, CVS, Subversion, and Mercurial are
 just a few of the more popular VCSs.
 
 
-\subsection{Key Features}
+\subsection{Features}
 It is difficult to justify the effort of learning a new tool if you do not
 know what it is capable of.
 While different VCSs may offer variations, the following is a list of key
 features typical of VCSs:
+
 \begin{itemize}
 \item History\\
 VCSs track changes that have been made to a file and who authored them.
@@ -123,6 +113,7 @@ with USB pen drives, portable hard drives, or cloud storage solutions - so why
 should you bother to learn this new system?  
 You might find version control useful if you have ever found yourself doing
 any of the following;
+
 \begin{itemize}
 \item Created multiple copies of a project, ``In case I need the old version''.
 \item Copied work on to a USB drive, Dropbox, or Google Drive to move it from
@@ -144,7 +135,6 @@ projects of any size.
 As previously stated, there is a wide range of VCS systems to choose from, so
 why does this guide focus on Git?
 
-
 Git Source Control Manager (SCM) is a free, open-source, distributed VCS
 primarily designed to be used for the management of source-code and
 programming projects.  The first version of Git was written in 2005 by Linus
@@ -156,7 +146,8 @@ corporations and organisations also utilise Git as their preferred version
 control system.  Examples of companies that use Git include; Google, Intel,
 Microsoft, Amazon, and Apple, to name a few.
 
-\subsection{Key Features}
+
+\subsection{Advantages}
 The following is a list of some of the reasons you might choose to learn Git
 over another VCS:
 \begin{itemize} 
@@ -188,6 +179,36 @@ While git is designed to be used from a terminal, a number of GUIs and
 visualisers have been developed to provide users with an alternative interface
 when using Git.
 \end{itemize}
+
+\subsection{Key Terms} 
+Up to this point, we have been using generic terms like `project' and
+`changes', but Git uses some specific terms for these concepts.
+The following list contains definitions of key terms that will be used from
+this point on.
+
+\begin{itemize} 
+\item Repository \\ 
+The folder or directory that contains the project. 
+A Repository can be local (on your PC), or remote (on a server).
+\item Clone \\ 
+The act of creating a local copy of a remote repository.
+\item Staging \\
+The act of selecting which changes will be will be included in the next
+commit.
+\item Commit \\ 
+The act of finalising a change to Repository.  
+\item Pull/Push \\ 
+Allows users to share changes made to a local repository to a remote, or vice
+versa.  
+\item Branch \\ 
+A Repository can have multiple branches or forks, allowing development of
+features to progress independently of each other.
+\item Merge \\ 
+The act of combining the content of multiple branches onto a single branch.
+\end{itemize}
+
+Note: the previous list is just a simple summary of terms, each feature and
+its use will be described in richer detail later in this guide.
 
 
 
@@ -254,7 +275,6 @@ $ git config --global user.name "John Smith"
 $ git config --global user.email john.smith@email.com
 \end{lstlisting}
 
-
 \noindent
 Lets go over the structure of the commands, and what they did.
 
@@ -263,18 +283,15 @@ Lets go over the structure of the commands, and what they did.
 All git commands a prefaced by the word {\tt git}, this identifies that
 following command is to be run by Git, rather than another application
 installed on the computer.
-
 \item
 The word {\tt config} is used with any commands that relate to the
 configuration or setup of git.
-
 \item
 The {\tt --global} flag means that the following configuration will be applied
 by default to all git repositories on the machine.
 If you wanted to use a different email or username for a repository, you can
 simply run the previous commands while within the project directory, omitting
 the {\tt --global} flag.
-
 \item
 Obviously, the {\tt user.name} and {\tt user.email} commands alter the current
 Git identities name and email.
@@ -283,10 +300,36 @@ revealing your name you can use a pseudonym, and many Git providers will
 assign you with an anonymous email which you can use for publishing commits.
 \end{itemize}
 
-\begin{lstlisting}[label=lst_config_edititor,
-caption=Updating the default Git identity]
-$ git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe'-multiInst -nosession" \end{lstlisting}
+
 \subsubsection{Text Editor}
+
+
+Executing certain commands in Git will cause the system to launch a text
+editor, allowing you to enter information like a tag or commit message.
+Git will select a text editor for you automatically, which on a windows is VIM.
+While VIM is a powerful tool in its own right, it is not the most intuitive,
+and as such it is recommended that you change the editor to one you are more
+familiar with.
+To change the defualt editior to Nano, the follwoing command can be used:
+
+\begin{lstlisting}[label=last_config_nano,
+caption=Updating the defualt Git editor to Nano]
+$ git config --global core.editor "nano"
+\end{lstlisting}
+
+You are not just limited to terminal based editors either, you can have git
+launch any text editor installed on your machine.
+The following listing give an example of how to alter Git to run  Notepad++ as
+the defualt editor;
+
+\begin{lstlisting}[label=lst_config_note,
+caption=Updating the defualt Git editor to Notepad++]
+$ git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe'-multiInst -nosession" 
+\end{lstlisting}
+
+Note that if you have installed Notepad++ in a different location, or want to
+use a different editor you will have to amend the command appropriately.
+
 
 
 \section{Creating A Repository}
