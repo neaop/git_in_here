@@ -2,6 +2,7 @@
 \usepackage{handout}
 
 
+
 \begin{document}
 
 \title{ 
@@ -18,6 +19,8 @@
 
 \date{2018} 
 \maketitle
+
+
 
 \begin{abstract} The purpose of this documentation is to provide a simple and
 concise introduction to the use and understanding of the Git source control
@@ -271,8 +274,8 @@ In order to set you name and email the following two commands can be run:
 
 \begin{lstlisting}[label=lst_config_user,
 caption=Updating the default Git identity]
-$ git config --global user.name "John Smith"
-$ git config --global user.email john.smith@email.com
+ git config --global user.name "John Smith"
+ git config --global user.email john.smith@email.com
 \end{lstlisting}
 
 \noindent
@@ -312,9 +315,9 @@ and as such it is recommended that you change the editor to one you are more
 familiar with.
 To change the defualt editior to Nano, the follwoing command can be used:
 
-\begin{lstlisting}[label=last_config_nano,
+\begin{lstlisting}[label=lst_config_nano,
 caption=Updating the defualt Git editor to Nano]
-$ git config --global core.editor "nano"
+ git config --global core.editor "nano"
 \end{lstlisting}
 
 You are not just limited to terminal based editors either, you can have git
@@ -324,7 +327,7 @@ the defualt editor;
 
 \begin{lstlisting}[label=lst_config_note,
 caption=Updating the defualt Git editor to Notepad++]
-$ git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe'-multiInst -nosession" 
+ git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe'-multiInst -nosession" 
 \end{lstlisting}
 
 Note that if you have installed Notepad++ in a different location, or want to
@@ -333,7 +336,19 @@ use a different editor you will have to amend the command appropriately.
 
 
 \section{Creating A Repository}
+Now that we have Git installed and configured we can start to use Git proper.
+In your terminal, navigate to a directory that you want to become a Git
+repository - the parent directory of a project is ideal.
+Once you are within the correct directory, execute the following command:
+\begin{lstlisting}[label=lst_init,
+caption=Initialisin a new Git repository]
+ git init 
+\end{lstlisting}
 
+The {\tt init} command will create a hidden {\tt .git} directory within your
+current directory.
+This {\tt .git} directory contains a number of files that allow Git to
+function.
 
 
 \section{Staging Files}
