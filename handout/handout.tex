@@ -2,7 +2,6 @@
 \usepackage{handout}
 
 
-
 \begin{document}
 
 \title{ 
@@ -268,7 +267,7 @@ configuration steps in order to use Git at its full potential.
 
 \subsubsection{Git Identity}
 In order to create commits, Git requires two pieces of information, a user
-name and email, without setting these varibles you will be unable to publish
+name and email, without setting these variables you will be unable to publish
 any changes you make with Git.
 In order to set you name and email the following two commands can be run:
 
@@ -305,15 +304,13 @@ assign you with an anonymous email which you can use for publishing commits.
 
 
 \subsubsection{Text Editor}
-
-
 Executing certain commands in Git will cause the system to launch a text
 editor, allowing you to enter information like a tag or commit message.
 Git will select a text editor for you automatically, which on a windows is VIM.
 While VIM is a powerful tool in its own right, it is not the most intuitive,
 and as such it is recommended that you change the editor to one you are more
 familiar with.
-To change the defualt editior to Nano, the follwoing command can be used:
+To change the default editor to Nano, the following command can be used:
 
 \begin{lstlisting}[label=lst_config_nano,
 caption=Updating the defualt Git editor to Nano]
@@ -323,7 +320,7 @@ caption=Updating the defualt Git editor to Nano]
 You are not just limited to terminal based editors either, you can have git
 launch any text editor installed on your machine.
 The following listing give an example of how to alter Git to run  Notepad++ as
-the defualt editor;
+the default editor;
 
 \begin{lstlisting}[label=lst_config_note,
 caption=Updating the defualt Git editor to Notepad++]
@@ -335,11 +332,52 @@ use a different editor you will have to amend the command appropriately.
 
 
 
+\section{Using Git}
+Now that Git has been successfully installed, and an identity has been created
+to author commits, it is now possible to start using Git proper.
+
+Before getting into the nitty-gritty, we are first going to have a brief
+description of how Git works and the standard process of version controlling
+using Git. 
+
+Please note that the following descriptions are quite high-level and are
+intended to help those who haven't used Git before better conceptualise the
+process. A number of resources exist that go into much finer detail of the
+technical implementation of Git.
+
+\subsection{How Git Works}
+At its core, Git simply allows a user to take a snapshot of the current state
+of the files contained within a repository.
+These snapshots make Git somewhat unique in terms of VCS's, which typically
+only track the changes the changes made in each file.
+The fact Git tracks snapshots of your project, rather than just the changes
+allows it to operate in an entirely decentralised manner, and allows it to
+perform some complex operations that other VCS's are unable to.
+
+\subsubsection{File States}
+There are three main states that a file can be in while in a Git repository:
+\begin{itemize}
+\item Committed - When a file is committed it means that its current state has
+been saved by Git.
+\item Modified - This means that the file has been changed since the last time
+it was committed.
+\item Staged - A stage file is one that has been changed you want to include
+it in your next commit.
+\end{itemize}
+
+From a users point of view, a simplified Git workflow consists of making
+changes to files, staging the files when you are happy with there current
+state, and finalising the changes by committing them to Git's local database.
+
+With the prvious description in mind, lets describe the actual commands needed
+to carry out the workflow.
+
 \section{Creating A Repository}
 Now that we have Git installed and configured we can start to use Git proper.
 In your terminal, navigate to a directory that you want to become a Git
 repository - the parent directory of a project is ideal.
 Once you are within the correct directory, execute the following command:
+
 \begin{lstlisting}[label=lst_init,
 caption=Initialisin a new Git repository]
  git init 
@@ -347,8 +385,24 @@ caption=Initialisin a new Git repository]
 
 The {\tt init} command will create a hidden {\tt .git} directory within your
 current directory.
-This {\tt .git} directory contains a number of files that allow Git to
-function.
+This {\tt .git} directory contains all the files that  Git requires to track
+files, changes, commits, branches, and more.
+
+You can call the {\tt init} command in an empty directory, or in a folder that
+already contains a project.
+
+
+
+\section{Repository Status}
+Now that we have initialised a Git repository, what can we do with it?
+The status of a Git repository can be checked by executing the following
+command while within a Git repository:
+
+\begin{lstlisting}[label=lst_status,
+caption=Initialisin a new Git repository]
+ git status
+\end{lstlisting}
+
 
 
 \section{Staging Files}
