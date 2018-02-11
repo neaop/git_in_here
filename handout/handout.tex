@@ -359,44 +359,79 @@ There are three main states that a file can be in while in a Git repository:
 \begin{itemize}
 \item Committed - When a file is committed it means that its current state has
 been saved by Git.
-\item Modified - This means that the file has been changed since the last time
-it was committed.
-\item Staged - A stage file is one that has been changed you want to include
-it in your next commit.
+\item Modified - A modified file is a file that has been edited since the
+last time it was committed.
+\item Staged - A staged file is one that has been changed you want to include
+it in your next commit (or snapshot).
 \end{itemize}
 
 From a users point of view, a simplified Git workflow consists of making
 changes to files, staging the files when you are happy with there current
 state, and finalising the changes by committing them to Git's local database.
 
-With the prvious description in mind, lets describe the actual commands needed
+With the previous description in mind, lets describe the actual commands needed
 to carry out the workflow.
 
 \section{Creating A Repository}
-Now that we have Git installed and configured we can start to use Git proper.
+In order to to use Git to its full potential, your files must be stored in a
+Git repository.
 In your terminal, navigate to a directory that you want to become a Git
 repository - the parent directory of a project is ideal.
 Once you are within the correct directory, execute the following command:
 
 \begin{lstlisting}[label=lst_init,
-caption=Initialisin a new Git repository]
+caption=Initialising a new Git repository]
  git init 
 \end{lstlisting}
 
-The {\tt init} command will create a hidden {\tt .git} directory within your
-current directory.
-This {\tt .git} directory contains all the files that  Git requires to track
-files, changes, commits, branches, and more.
+The {\tt init} command will create a hidden subdirectory called {\tt .git}
+within your current working directory.
+This {\tt .git} directory contains all the files that Git requires to
+operates, such as a database of commit objects, the branches of a project and
+more.
 
 You can call the {\tt init} command in an empty directory, or in a folder that
-already contains a project.
+already contains a files and subdirectories.
 
+
+
+\section{Tracking Files}
+Now that we have created a Git repository, we can instruct Git to start
+tracking files, informing of us when they change, and finalising those changes
+with commits. 
+
+If you have initialised a repository in an empty directory, you will first
+need to create a file, otherwise you can have git start tracking files using
+the following command:
+
+\begin{lstlisting}[label=lst_add_file,
+caption=Adding a file to the Stagging area.]
+ git add file_name
+\end{lstlisting}
+Obviously, replacing {\tt file\_name} with the name of the file that you want
+to track.
+
+The {\tt git add} command also allows for the use of regular-expressions (or
+regexs) for determining which files you add to the repository, for instance the
+following command will add all files that end with the {\tt .c} file
+extension:
+
+\begin{lstlisting}[label=lst_add_regex,
+caption=Adding all files ending with .c file etension.]
+ git add *.c
+\end{lstlisting}
+It is important to remember that adding a file is not the same as a commit.
+A file that has been added (or staged) will be included in the commit that you
+make.
 
 
 \section{Repository Status}
-Now that we have initialised a Git repository, what can we do with it?
-The status of a Git repository can be checked by executing the following
-command while within a Git repository:
+Now that we have created a repository, and staged some files, Git's status
+command can be used to inform us about the current condition of the reposity.
+In the case of Git, a repositories status refers to the status of files - i.e.
+Whether a file is unstated, staged, or untracked.
+
+The following command will return a repository's status:
 
 \begin{lstlisting}[label=lst_status,
 caption=Initialisin a new Git repository]
