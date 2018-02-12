@@ -342,35 +342,68 @@ using Git.
 
 Please note that the following descriptions are quite high-level and are
 intended to help those who haven't used Git before better conceptualise the
-process. A number of resources exist that go into much finer detail of the
-technical implementation of Git.
+process. 
+A number of resources exist that go into much finer detail of the
+technical implementation of Git [ref].
 
 \subsection{How Git Works}
 At its core, Git simply allows a user to take a snapshot of the current state
 of the files contained within a repository.
 These snapshots make Git somewhat unique in terms of VCS's, which typically
-only track the changes the changes made in each file.
+only track the changes made in each file.
 The fact Git tracks snapshots of your project, rather than just the changes
 allows it to operate in an entirely decentralised manner, and allows it to
 perform some complex operations that other VCS's are unable to.
 
-\subsubsection{File States}
-There are three main states that a file can be in while in a Git repository:
+
+\subsection{Git Workflow}
+Git workflow is a term that is often thrown around, and it simply refers to the
+manner in which a person incorporates Git into the manner in which they work.
+
+While many people will have very strong opinions on what constitutes a
+`proper' Git workflow it is import to remember that it is not a standardised
+process, and ultimately you should use a workflow that suites you best.
+With that in mind, a simple workflow suitable for a small a project is out
+lined below:
+
+\begin{enumerate}
+\item Initialise a new repository to store and track your project.
+\item Work on your project.
+\item When you create new files you want to keep, instruct Git to start
+tracking them.
+\item When you are ready to take a snapshot of your project, inform Git to
+Stage the files you want in the snapshot.
+\item Commit the changes made to the staged files - including a message to
+remind yourself of the work you have done.
+\item Repeat from step 2!
+\end{enumerate}
+
+\subsection{File States}
+There are two  main states that a file can be in while in a Git repository:
 \begin{itemize}
-\item Committed - When a file is committed it means that its current state has
-been saved by Git.
-\item Modified - A modified file is a file that has been edited since the
-last time it was committed.
-\item Staged - A staged file is one that has been changed you want to include
-it in your next commit (or snapshot).
+\item Tracked\\
+A tracked file is one that has been added to a Git repository
+- any changes made to this file will be observed by Git and a user can request
+  information about said changes.
+\item Untracked\\
+An untracked file is one that exists within the repository, but Git is not
+keeping record of.
+Git will not be able to tell you if an untracked file has been edited, and
+untracked files will not be included in your commits.
 \end{itemize}
 
-From a users point of view, a simplified Git workflow consists of making
-changes to files, staging the files when you are happy with there current
-state, and finalising the changes by committing them to Git's local database.
-
-With the previous description in mind, lets describe the actual commands needed
-to carry out the workflow.
+A tracked file can also be in an number of states;
+\begin{itemize}
+\item Modified\\ 
+A modified file is one that has been changed in some way since it was
+previously committed.
+\item Staged\\
+Staged files are those that have been changed and will be included in the next
+commit.
+\item Unmodified\\
+A file is unmodified if it has been previously committed, and has not been
+changed since then.
+\end{itemize}
 
 \section{Creating A Repository}
 In order to to use Git to its full potential, your files must be stored in a
@@ -401,8 +434,8 @@ tracking files, informing of us when they change, and finalising those changes
 with commits. 
 
 If you have initialised a repository in an empty directory, you will first
-need to create a file, otherwise you can have git start tracking files using
-the following command:
+need to create some files, otherwise you can have git start tracking said
+files using the following command:
 
 \begin{lstlisting}[label=lst_add_file,
 caption=Adding a file to the Stagging area.]
@@ -421,8 +454,8 @@ caption=Adding all files ending with .c file etension.]
  git add *.c
 \end{lstlisting}
 It is important to remember that adding a file is not the same as a commit.
-A file that has been added (or staged) will be included in the commit that you
-make.
+A file that has been added (or staged) will be included in the next commit
+that you make.
 
 
 \section{Repository Status}
