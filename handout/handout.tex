@@ -441,14 +441,15 @@ already contains a files and subdirectories.
 
 
 \subsection{Staging Files}
-Now that we have created a Git repository, we can instruct Git to start
-tracking files - which will let us know information about how said files have
-changed, and allow us to finalise those changes with commits. 
+Now that we have created a Git repository, we can begin staging files.
+Staging file means that the current contents of the file will be added to
+next commit that is made.
+Once a file has been staged and committed, Git will begin to track said file,
+allowing you to see how a file has been altered between commits.
 
 If you have initialised a repository in an empty directory, you will first
-need to create some files, otherwise you can have Git start tracking said
-files using the following command:
-
+need to create some files, otherwise you can have Git stage a file via the
+following command:
 \begin{lstlisting}[label=lst_add_file,
 caption=Adding a file to the Stagging area.]
  git add file_name
@@ -458,12 +459,10 @@ to track.
 
 The {\tt git add} command also allows for the use of regular-expressions (or
 regexs) for determining which files you add to the repository, for instance the
-following command will add all files that end with the {\tt .c} file
-extension:
-
+following command will add all the text files present in a repository:
 \begin{lstlisting}[label=lst_add_regex,
-caption=Adding all files ending with .c file etension.]
- git add *.c
+caption=Adding all files ending with .txt file etension.]
+ git add *.txt
 \end{lstlisting}
 It is important to remember that adding a file is not the same as a commit.
 A file that has been added (or staged) will be included in the next commit
@@ -483,28 +482,59 @@ caption=Initialisin a new Git repository]
 Once you execute this command, Git will produce an output message directly in
 the terminal.
 The status will tell you whether files in the repository are; modified,
-untracked, or staged.
-Depending on your operating system and terminal, these statuses will often be
-colour coded for ease of reading.
+untracked, staged or deleted.
 
+Note, it is possible for a file to be listed multiple sections of a status
+output.
+If you use the {\tt add} command to stage a file, the {\tt status} command
+will rightly indicate that said file will be included in the next commit.
+If you then modify or delete the file and use the {\tt status} command again,
+Git will inform you that the file is ready to be committed AND that it has been
+modified.
+This happens because the {\tt add} command stages the file exactly as it was
+when the command was executed.
+To stage the most update version of the file, simply {\tt add} it again.
 
 The status command is paramount to the efficient operation of Git.
-This single command allows you to quickly see what files have been changed, if
-new files have been added to the repository and are yet to be tracked, or which
-changed files will be added to the next commit.
-
-
-\section{Staging Files}
+This single command allows you to quickly see what files have been changed or
+deleted, if new files have been added to the repository and are yet to be
+tracked, or which changed files will be added to the next commit.
 
 
 
-\section{Committing Changes}
+\subsection{Committing Changes}
+We have now created a repository, staged some files, and checked the status of
+said files.
+The remaining step of the simple Git workflow is to finalise the changes made
+to the repository in a commit.
 
+Assuming that the repository has changes to be committed, the following command
+can be run:
 
+\begin{lstlisting}[label=lst_commit,
+caption=Commiting changes to a Git repository]
+ git commit
+\end{lstlisting}
+Upon executing the {\tt commit} command Git will launch a text editor,
+prompting you to enter a message.
+This message will be bundled with the commit and can be used to describe the
+changes you made to the repository, and why you made them.
+Once you have entered a message, save and close the text editor and Git will
+finalise the commit.
 
-\section{Pushing}
-
-
-
+Note that Git requires a non-empty message to create a commit by default, not
+providing a message will cause Git to abort the commit process.
+If you want to create a commit without Git booting up a text editor, the
+following command can be used:
+\begin{lstlisting}[label=lst_commit_m,
+caption=Commiting with a message via one command.]
+ git commit -m "Message goes here"
+\end{lstlisting}
+The {\tt -m} flag in message informs Git that the argument following it should
+be substituted as the commit message, omitting the need to start an instance
+of a text editor.
 \end{document}
+
+
+
 
