@@ -427,9 +427,9 @@ make.
 
 \section{Repository Status}
 Now that we have created a repository, and staged some files, Git's status
-command can be used to inform us about the current condition of the reposity.
-In the case of Git, a repositories status refers to the status of files - i.e.
-Whether a file is unstated, staged, or untracked.
+command can be used to inform us about the current condition of the repository.
+In the case of Git, a repositories status refers to the state its of files -
+i.e.  Whether a file is unstated, staged, or untracked.
 
 The following command will return a repository's status:
 
@@ -437,7 +437,17 @@ The following command will return a repository's status:
 caption=Initialisin a new Git repository]
  git status
 \end{lstlisting}
+Once you execute this command, Git will produce an outpu message directly in
+the terminal.
+The status will tell you whether files in the repository are; modified,
+untracked, or staged.
+Depending on your operating system and terminal, these statuses will often be
+colour coded for ease of reading.
 
+The status command is paramount to the efficient operation of Git.
+This single command allows you to quickly see what files have been changed, if
+new files have been added to the repository and are yet to be tracked, or which
+changed files will be added to the next commit.
 
 
 \section{Staging Files}
