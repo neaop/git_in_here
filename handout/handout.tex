@@ -378,6 +378,9 @@ remind yourself of the work you have done.
 \item Repeat from step 2!
 \end{enumerate}
 
+With the idea of what a basic git Workflow looks like in mind, lets describe
+some of the principles and actions that took place.
+
 \subsection{File States}
 There are two  main states that a file can be in while in a Git repository:
 \begin{itemize}
@@ -405,7 +408,17 @@ A file is unmodified if it has been previously committed, and has not been
 changed since then.
 \end{itemize}
 
-\section{Creating A Repository}
+
+
+\section{Simple Git Commands}
+We have a had a few descriptions of how Git operates, and some techniques we
+can employ to use Git effectivly.
+The following section will go over the basic Git commands needed to carry out
+a standard Git workflow - initialising a repository, staging files and
+finalising commits.
+
+
+\subsection{Initialising A Repository}
 In order to to use Git to its full potential, your files must be stored in a
 Git repository.
 In your terminal, navigate to a directory that you want to become a Git
@@ -420,21 +433,20 @@ caption=Initialising a new Git repository]
 The {\tt init} command will create a hidden subdirectory called {\tt .git}
 within your current working directory.
 This {\tt .git} directory contains all the files that Git requires to
-operates, such as a database of commit objects, the branches of a project and
-more.
+operate, such as a database of commit objects, the branches of a project, the
+current status of files, and more.
 
 You can call the {\tt init} command in an empty directory, or in a folder that
 already contains a files and subdirectories.
 
 
-
-\section{Tracking Files}
+\subsection{Staging Files}
 Now that we have created a Git repository, we can instruct Git to start
-tracking files, informing of us when they change, and finalising those changes
-with commits. 
+tracking files - which will let us know information about how said files have
+changed, and allow us to finalise those changes with commits. 
 
 If you have initialised a repository in an empty directory, you will first
-need to create some files, otherwise you can have git start tracking said
+need to create some files, otherwise you can have Git start tracking said
 files using the following command:
 
 \begin{lstlisting}[label=lst_add_file,
@@ -458,24 +470,23 @@ A file that has been added (or staged) will be included in the next commit
 that you make.
 
 
-\section{Repository Status}
+\subsection{File Status}
 Now that we have created a repository, and staged some files, Git's status
-command can be used to inform us about the current condition of the repository.
-In the case of Git, a repositories status refers to the state its of files -
-i.e.  Whether a file is unstated, staged, or untracked.
+command can be used to inform us about the current condition of files in the
+repository.  
 
-The following command will return a repository's status:
-
+The following command will return the status of a repositories files:
 \begin{lstlisting}[label=lst_status,
 caption=Initialisin a new Git repository]
  git status
 \end{lstlisting}
-Once you execute this command, Git will produce an outpu message directly in
+Once you execute this command, Git will produce an output message directly in
 the terminal.
 The status will tell you whether files in the repository are; modified,
 untracked, or staged.
 Depending on your operating system and terminal, these statuses will often be
 colour coded for ease of reading.
+
 
 The status command is paramount to the efficient operation of Git.
 This single command allows you to quickly see what files have been changed, if
