@@ -1,7 +1,8 @@
 \documentclass{beamer}
 \usecolortheme{solarized}
-
 \usepackage{hyperref}
+\setbeamertemplate{section in toc}[sections numbered]
+
 
 \title{Git In Here}
 \subtitle{An Unoffical Introduction To Git Version Control Management}
@@ -15,33 +16,17 @@
 
 
 \frame{\titlepage}
-  
-\begin{frame}
-\frametitle{Presentation Content}
-    \begin{enumerate}
-    \item What is Version Control?
-    \item What is Git?
-    \item Setting up Git
-    \item Common Commands
-    \item Git Workflow
-    \item Branching
-    \item Merging
-    \item Conflicts
-    \end{enumerate}
+
+
+\begin{frame}{Table of Contents}
+    \tableofcontents
 \end{frame}
 
-\begin{frame}
-\frametitle{What is Version Control?}
+
+\section{What is Version Control?}
+\begin{frame}[allowframebreaks]{\secname}
     Version Control Systems are tools that let you track changes    
-    \begin{itemize}
-    \item Let you see how a file was changed
-    \item Let you see when a file was changed
-    \item Let who made a change
-    \item Let you undo changes /  revert to a previous version
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
+    
     A number of different VCSs are available:
     \begin{itemize}
     \item Subversion
@@ -50,6 +35,72 @@
     \item Fossil
     \item Git
     \end{itemize}
+    Each VCS has its own quirks in style and implementation 
+
+\framebreak
+
+    Common features of version control include:
+    \begin{itemize}
+    \item Change History
+    \item Change Reversion  
+    \item Branching
+    \item Tagging
+    \item Collaboration
+    \end{itemize}
 \end{frame}
 
+
+\section{Why you should use Version control?}
+\begin{frame}{\secname}
+    VCS can help with common problems like:
+
+    \begin{itemize}
+    \item Creating multiple copies files ``in case you need the old one''
+    \item Put work onto a USB drive to move it between computers
+    \item Copied code into email / IM to send it to a friend
+    \item Lost work due to loss of power / faulty hard drive
+    \item Overwritten someone else's work when collaborating
+    \end{itemize}
+\end{frame}
+
+
+\section{What is Git?}
+\begin{frame}[allowframebreaks]{\secname}
+    Git was developed in 2005 by Linus Torvalds (Linux Kernal creator).
+    
+    It has risen to become one of the most popular VCSs in use today.
+
+    Some companies that use Git include:
+    \begin{itemize}
+    \item Google
+    \item Apple
+    \item Microsoft
+    \item Facebook
+    \item Amazon
+    \item Adobe
+    \item Mozilla
+    \item NASA
+    \end{itemize}
+
+\framebreak
+
+    Git has a number of key features that make it an attractive VCS
+    \begin{itemize}
+    \item Distributed
+    \item Decentralised
+    \item Free (like beer and like speech)
+    \item Multiplatform
+    \item Speed
+    \item Popularity
+    \end{itemize}
+
+\end{frame}
+
+\section{Setting up Git}
+\section{Common Commands}
+\section{Git Workflow}
+\section{Branching}
+\section{Merging}
+\section{Conflicts}
 \end{document}
+
