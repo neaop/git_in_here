@@ -3,7 +3,6 @@
 \usepackage{hyperref}
 \setbeamertemplate{section in toc}[sections numbered]
 
-
 \title{Git In Here}
 \subtitle{An Unoffical Introduction To Git Version Control Management}
 \author{Sam Dixon\\
@@ -11,126 +10,106 @@
 \date{2018}
 \titlegraphic{\includegraphics[height=3.5cm]{../res/git_icon_orange.png}} 
 
-
 \begin{document}
 
-
 \frame{\titlepage}
-
 
 \begin{frame}{Contents}
     \tableofcontents
 \end{frame}
 
-
 \section{What is Version Control?}
 \begin{frame}[allowframebreaks]{\secname}
-    Version Control Systems are tools that let you track changes    
-    
+    Version Control Systems are tools that let you track changes
+
     A number of different VCSs are available:
     \begin{itemize}
-    \item Subversion
-    \item Mercurial
-    \item CVS
-    \item Fossil
-    \item Git
+        \item Subversion
+        \item Mercurial
+        \item CVS
+        \item Fossil
+        \item Git
     \end{itemize}
     Each VCS has its own quirks in style and implementation 
-
 \framebreak
-
     Common features of version control include:
     \begin{itemize}
-    \item Change History
-    \item Change Reversion  
-    \item Branching
-    \item Tagging
-    \item Collaboration
+        \item Change History
+        \item Change Reversion  
+        \item Branching
+        \item Tagging
+        \item Collaboration
     \end{itemize}
 \end{frame}
 
 
 \begin{frame}{Why you should use Version control}
     VCS can help with common problems like:
-
     \begin{itemize}
-    \item Creating multiple copies files ``in case you need the old one''
-    \item Put work onto a USB drive to move it between computers
-    \item Copied code into email / IM to send it to a friend
-    \item Lost work due to loss of power / faulty hard drive
-    \item Overwritten someone else's work when collaborating
+        \item Creating multiple copies files ``in case you need the old one''
+        \item Put work onto a USB drive to move it between computers
+        \item Copied code into email / IM to send it to a friend
+        \item Lost work due to loss of power / faulty hard drive
+        \item Overwritten someone else's work when collaborating
     \end{itemize}
 \end{frame}
-
 
 \section{What is Git?}
 \begin{frame}[allowframebreaks]{\secname}
     Git was developed in 2005 by Linus Torvalds.
-    
-    It has become one of the most popular VCSs in use today.
+
+    It has become one of the most popular VCSs in use today
 
     Some companies that use Git include:
     \begin{itemize}
-    \item Google
-    \item Apple
-    \item Microsoft
-    \item Facebook
-    \item Amazon
-    \item Adobe
-    \item Mozilla
-    \item NASA
+        \item Google
+        \item Apple
+        \item Microsoft
+        \item Facebook
+        \item Amazon
+        \item Adobe
+        \item Mozilla
+        \item NASA
     \end{itemize}
-
 \framebreak
-
     Git has a number of key features that make it an attractive VCS
     \begin{itemize}
-    \item Distributed
-    \item Decentralised
-    \item Free (like beer and like speech)
-    \item Multiplatform
-    \item Speed
-    \item Popularity
+        \item Distributed
+        \item Decentralised
+        \item Free (like beer and like speech)
+        \item Multiplatform
+        \item Speed
+        \item Popularity
     \end{itemize}
-
 \end{frame}
 
+\begin{frame}{Common Terms}
+    Git has a number of key terms that you should keep in mind
+    \begin{itemize}
+        \item Repository 
+        \item Commit
+        \item Push / Pull
+        \item Tag
+        \item Branch
+        \item Merge
+    \end{itemize}
+    Some of terms may be used in other VCSs, but their functions may not be
+    the same
+\end{frame}
 
 \section{Setting up Git}
 \begin{frame}[allowframebreaks]{\secname}
     Git can be installed in a number of ways:
     \begin{itemize}
-    \item Download directly from Git ({\tt \url{https://git-scm.com/downloads}}) 
-    \item Install a Git visualiser (GitHub Desktop, Sourcetree, Kraken)
-    \item Install via a package manager 
+        \item Download directly from Git ({\tt \url{https://git-scm.com/downloads}}) 
+        \item Install a Git visualiser (GitHub Desktop, Sourcetree, Kraken)
+        \item Install via a package manager 
     \end{itemize}
-
 \framebreak
-
     Git requires a name and email to create commits \\~\\
-
     {\tt \$ git congif --global user.name "Sam"}
-
     {\tt \$ git config --global user.email sam@mail.com} \\~\\
-
     These settings are not used as login credentials / tokens
-
-\end{frame}
-
-\section{Common Terms}
-\begin{frame}{\secname}
-    Git has a number of key terms that you should keep in mind
-    \begin{itemize}
-    \item Repository 
-    \item Commit
-    \item Push / Pull
-    \item Tag
-    \item Branch
-    \item Merge
-    \end{itemize}
-    Some of terms may be used in other VCSs, but their functions may not be
-    the same
-
 \end{frame}
 
 \section{Git Workflow}
@@ -147,59 +126,47 @@
 
 \section{Basic Commands}
 \begin{frame}{Getting a Repo}
-    
     Git can create a repo in as a new folder:\\~\\
-
     {\tt \$ git init project} \\~\\
-
     or in an existing directory: \\~\\
-
     {\tt \$ git init} \\~\\
-
     It doesn't matter if there are files already in the directory
-
 \end{frame}
 
 \begin{frame}{Staging Files}
     Git will not track files by default - you have to specify: \\~\\
-
     {\tt \$ git add file\_name} \\~\\
-
     You can add multiple files in a single command: \\~\\
-
     {\tt \$ git add file\_1 file\_2} \\~\\
-
     Or you can use wildcards: \\~\\
-
     {\tt \$ git add *.txt}
 \end{frame}
 
 \begin{frame}{Checking File State}
     You can check the state of a repo with the following: \\~\\
-
     {\tt \$ git status} \\~\\
-    
     Files can be in multiple states:
     \begin{itemize}
-    \item Untracked
-    \item Modified
-    \item Staged
-    \item Deleted
+        \item Untracked
+        \item Modified
+        \item Staged
+        \item Deleted
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Committing Changes}
     When you are ready to finalise your changes; commit: \\~\\
-
     {\tt \$ git commit} \\~\\
-
     You can also declare a commit message in the same command: \\~\\
-
     {\tt \$ git commit -m "Your message here"}
 \end{frame}
 
-
-
+\begin{frame}{Viewing History}
+    Once you have a few commits, you can review them:
+    {\tt \$ git log}
+    View what changes were made in each commit with {\tt patch} flag:
+    {\tt \$ git log -p}
+\end{frame}
 
 
 
@@ -209,36 +176,23 @@
 \section{Tagging}
 \begin{frame}[allowframebreaks]{\secname}
     Tags are simply a pointer to a specific commit
-
     Used to show commits of interest, like version releases or bugs \\~\\
-
     Create a lightweight tag with the following command:
-
     {\tt \$ git tag tag\_name} \\~\\
-
     Annotated tags can be created as well: 
-
     {\tt \$ git tag -a tag\_name -m "tag message"} \\~\\
-
 \framebreak
     You can see what tags there are in a repo:
-
     {\tt \$ git tag} \\~\\
-
     Or you can inspect a specific tag:
-
     {\tt \$ git show tag\_name}
-
-
 \end{frame}
 
 \section{Branching}
 \begin{frame}{\secname}
     Branches a key feature of Git - They allow different version of the same
     project to exists simultaneously
-
     Branches can be used to experiment or write patches
-
     Branches are inexpensive to create / delete
 \end{frame}
 
