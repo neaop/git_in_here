@@ -50,8 +50,7 @@
 \end{frame}
 
 
-\section{Why you should use Version control?}
-\begin{frame}{\secname}
+\begin{frame}{Why you should use Version control}
     VCS can help with common problems like:
 
     \begin{itemize}
@@ -98,19 +97,150 @@
 
 
 \section{Setting up Git}
-\begin{frame}{\secname}
+\begin{frame}[allowframebreaks]{\secname}
     Git can be installed in a number of ways:
     \begin{itemize}
     \item Download directly from Git ({\tt \url{https://git-scm.com/downloads}}) 
     \item Install a Git visualiser (GitHub Desktop, Sourcetree, Kraken)
     \item Install via a package manager 
     \end{itemize}
+
+\framebreak
+
+    Git requires a name and email to create commits \\~\\
+
+    {\tt \$ git congif --global user.name "Sam"}
+
+    {\tt \$ git config --global user.email sam@mail.com} \\~\\
+
+    These settings are not used as login credentials / tokens
+
 \end{frame}
 
-\section{Common Commands}
+\section{Common Terms}
+\begin{frame}{\secname}
+    Git has a number of key terms that you should keep in mind
+    \begin{itemize}
+    \item Repository 
+    \item Commit
+    \item Push / Pull
+    \item Tag
+    \item Branch
+    \item Merge
+    \end{itemize}
+    Some of terms may be used in other VCSs, but their functions may not be
+    the same
+
+\end{frame}
+
 \section{Git Workflow}
+\begin{frame}{\secname}
+    The standard process for using Git is as follows: \\~\\
+    \begin{enumerate}
+        \item {\bf Initialise} a Git repo
+        \item Do some work (edit files)
+        \item {\bf Stage} the changes you want to keep
+        \item Finalise the changes in a {\bf Commit}
+        \item Repeat from step 2
+    \end{enumerate}
+\end{frame}
+
+\section{Basic Commands}
+\begin{frame}{Getting a Repo}
+    
+    Git can create a repo in as a new folder:\\~\\
+
+    {\tt \$ git init project} \\~\\
+
+    or in an existing directory: \\~\\
+
+    {\tt \$ git init} \\~\\
+
+    It doesn't matter if there are files already in the directory
+
+\end{frame}
+
+\begin{frame}{Staging Files}
+    Git will not track files by default - you have to specify: \\~\\
+
+    {\tt \$ git add file\_name} \\~\\
+
+    You can add multiple files in a single command: \\~\\
+
+    {\tt \$ git add file\_1 file\_2} \\~\\
+
+    Or you can use wildcards: \\~\\
+
+    {\tt \$ git add *.txt}
+\end{frame}
+
+\begin{frame}{Checking File State}
+    You can check the state of a repo with the following: \\~\\
+
+    {\tt \$ git status} \\~\\
+    
+    Files can be in multiple states:
+    \begin{itemize}
+    \item Untracked
+    \item Modified
+    \item Staged
+    \item Deleted
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Committing Changes}
+    When you are ready to finalise your changes; commit: \\~\\
+
+    {\tt \$ git commit} \\~\\
+
+    You can also declare a commit message in the same command: \\~\\
+
+    {\tt \$ git commit -m "Your message here"}
+\end{frame}
+
+
+
+
+
+
+
+
+
+\section{Tagging}
+\begin{frame}[allowframebreaks]{\secname}
+    Tags are simply a pointer to a specific commit
+
+    Used to show commits of interest, like version releases or bugs \\~\\
+
+    Create a lightweight tag with the following command:
+
+    {\tt \$ git tag tag\_name} \\~\\
+
+    Annotated tags can be created as well: 
+
+    {\tt \$ git tag -a tag\_name -m "tag message"} \\~\\
+
+\framebreak
+    You can see what tags there are in a repo:
+
+    {\tt \$ git tag} \\~\\
+
+    Or you can inspect a specific tag:
+
+    {\tt \$ git show tag\_name}
+
+
+\end{frame}
+
 \section{Branching}
-\section{Merging}
-\section{Conflicts}
+\begin{frame}{\secname}
+    Branches a key feature of Git - They allow different version of the same
+    project to exists simultaneously
+
+    Branches can be used to experiment or write patches
+
+    Branches are inexpensive to create / delete
+\end{frame}
+
 \end{document}
 
