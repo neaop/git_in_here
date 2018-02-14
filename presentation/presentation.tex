@@ -30,8 +30,10 @@
         \item Fossil
         \item Git
     \end{itemize}
-    Each VCS has its own quirks in style and implementation 
+    Each VCS has its own quirks in style and implementation
+
 \framebreak
+    
     Common features of version control include:
     \begin{itemize}
         \item Change History
@@ -48,8 +50,8 @@
     \begin{itemize}
         \item Creating multiple copies files ``in case you need the old one''
         \item Put work onto a USB drive to move it between computers
-        \item Copied code into email / IM to send it to a friend
-        \item Lost work due to loss of power / faulty hard drive
+        \item Copied code into email/IM to send it to a friend
+        \item Lost work due to loss of power/faulty hard drive
         \item Overwritten someone else's work when collaborating
     \end{itemize}
 \end{frame}
@@ -71,12 +73,14 @@
         \item Mozilla
         \item NASA
     \end{itemize}
+
 \framebreak
+    
     Git has a number of key features that make it an attractive VCS
     \begin{itemize}
         \item Distributed
         \item Decentralised
-        \item Free (like beer and like speech)
+        \item Free (like beer {\it and} like speech)
         \item Multiplatform
         \item Speed
         \item Popularity
@@ -88,7 +92,7 @@
     \begin{itemize}
         \item Repository 
         \item Commit
-        \item Push / Pull
+        \item Push/Pull
         \item Tag
         \item Branch
         \item Merge
@@ -101,13 +105,15 @@
 \begin{frame}[allowframebreaks]{\secname}
     Git can be installed in a number of ways:
     \begin{itemize}
-        \item Download directly from Git ({\tt \url{https://git-scm.com/downloads}}) 
+        \item Download directly from Git: {\tt \url{https://git-scm.com/downloads}}
         \item Install a Git visualiser (GitHub Desktop, Sourcetree, Kraken)
         \item Install via a package manager 
     \end{itemize}
+
 \framebreak
+    
     Git requires a name and email to create commits \\~\\
-    {\tt \$ git congif --global user.name "Sam"}
+    {\tt \$ git congif --global user.name "Sam"} \\~\\
     {\tt \$ git config --global user.email sam@mail.com} \\~\\
     These settings are not used as login credentials / tokens
 \end{frame}
@@ -162,10 +168,13 @@
 \end{frame}
 
 \begin{frame}{Viewing History}
-    Once you have a few commits, you can review them:
-    {\tt \$ git log}
-    View what changes were made in each commit with {\tt patch} flag:
-    {\tt \$ git log -p}
+    Once you have a few commits, you can review them:\\~\\
+    {\tt \$ git log} \\~\\
+    View what changes were made in each commit with {\tt patch} flag: \\~\\
+    {\tt \$ git log -p} \\~\\
+    There are multiple flags that can alter how the log looks: \\~\\
+    {\tt \$ git log --oneline --graph --decorate}
+
 \end{frame}
 
 
@@ -176,15 +185,16 @@
 \section{Tagging}
 \begin{frame}[allowframebreaks]{\secname}
     Tags are simply a pointer to a specific commit
+
     Used to show commits of interest, like version releases or bugs \\~\\
-    Create a lightweight tag with the following command:
+    Create a lightweight tag with the following command: \\~\\
     {\tt \$ git tag tag\_name} \\~\\
-    Annotated tags can be created as well: 
+    Annotated tags can be created as well:  \\~\\
     {\tt \$ git tag -a tag\_name -m "tag message"} \\~\\
 \framebreak
-    You can see what tags there are in a repo:
+    You can see what tags there are in a repo: \\~\\
     {\tt \$ git tag} \\~\\
-    Or you can inspect a specific tag:
+    Or you can inspect a specific tag: \\~\\
     {\tt \$ git show tag\_name}
 \end{frame}
 
