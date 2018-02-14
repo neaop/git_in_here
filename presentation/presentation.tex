@@ -176,14 +176,13 @@
     {\tt \$ git log --oneline --graph --decorate}
 \end{frame}
 
-
 \section{Undoing}
 \begin{frame}{\secname}
     The {\tt amend} flag allows you to alter a commit
 
     It adds your staged files to the {\it previous} commit 
 
-    Use this to add files you forgot, or quick alterations:\\~\\
+    Use this to add files you forgot, or for quick alterations:\\~\\
     {\tt \$ git commit\\
     \$ git add forgotten\_file\\
     \$ git commit --amend} \\~\\
@@ -192,18 +191,24 @@
 \end{frame}
 
 \begin{frame}{Unstaging a File}
-   You may accidentally stage a file that you do not want to commit
+    You may accidentally stage a file that you do not want to commit
 
+    You can unstage the file, without losing the changes you made:\\~\\
+    {\tt \$ git reset HEAD file\_name} \\~\\
+    {\tt HEAD} is Git's name for the tip of the current branch   
+\end{frame}
 
+\begin{frame}{Unmodifying a File}
+    You may edit a file and decide to not keep the modifications
+
+    You revert a file to how it was when it was last committed: \\~\\
+    
+    {\tt \$ git checkout -- file\_name} \\~\\
+
+    This command is dangerous - you cant recover the uncommitted changes
 \end{frame}
 
 \section{Remotes}
-
-
-
-
-
-
 
 \section{Tagging}
 \begin{frame}[allowframebreaks]{\secname}
