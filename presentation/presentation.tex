@@ -170,12 +170,35 @@
 \begin{frame}{Viewing History}
     Once you have a few commits, you can review them:\\~\\
     {\tt \$ git log} \\~\\
-    View what changes were made in each commit with {\tt patch} flag: \\~\\
+    View what changes were made in each commit with the {\tt patch} flag: \\~\\
     {\tt \$ git log -p} \\~\\
     There are multiple flags that can alter how the log looks: \\~\\
     {\tt \$ git log --oneline --graph --decorate}
+\end{frame}
+
+
+\section{Undoing}
+\begin{frame}{\secname}
+    The {\tt amend} flag allows you to alter a commit
+
+    It adds your staged files to the {\it previous} commit 
+
+    Use this to add files you forgot, or quick alterations:\\~\\
+    {\tt \$ git commit\\
+    \$ git add forgotten\_file\\
+    \$ git commit --amend} \\~\\
+
+    When you amend a commit you can also change it's message
+\end{frame}
+
+\begin{frame}{Unstaging a File}
+   You may accidentally stage a file that you do not want to commit
+
 
 \end{frame}
+
+\section{Remotes}
+
 
 
 
