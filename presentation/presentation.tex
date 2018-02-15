@@ -225,6 +225,17 @@
     Git will then create a commit inverse of the selected hash \\~\\
 \end{frame}
 
+\begin{frame}{Reverting a Series of Commits}
+You can also undo a series  of commits in a single command \\~\\
+
+Use {\tt log} to find the first and last commit to remove \\~\\
+
+{\tt \$ git revert from\_hash..to\_hash} \\~\\
+
+Use the {\tt --no-edit} flag for git if you don't want to change the default
+revert message
+\end{frame}
+
 \section{Branching}
 \begin{frame}{\secname}
     Branches are a key feature of Git \\~\\
