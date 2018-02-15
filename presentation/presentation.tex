@@ -179,6 +179,25 @@
     {\tt \$ git log --oneline --graph --decorate}
 \end{frame}
 
+\begin{frame}{Ignoring Files}
+    You may not want to track all the files in repo
+
+    Config files, binary files and build files are often unwanted \\~\\
+
+    You can instruct git to ignore file using a git-ignore file:
+
+    Create a file called .gitignore in the root of your repo
+
+    Add glob patterns for files you want to ignore \\~\\
+
+    {\tt \slash bin} - ignores all files in the bin dir
+
+    {\tt *.o} - ignores all object files \\~\\
+
+    Many sample git-ignore files are available online
+
+\end{frame}
+
 \section{Undoing}
 \begin{frame}{\secname}
     The {\tt amend} flag allows you to alter a commit
@@ -226,14 +245,14 @@
 \end{frame}
 
 \begin{frame}{Reverting a Series of Commits}
-You can also undo a series  of commits in a single command \\~\\
+    You can also undo a series  of commits in a single command \\~\\
 
-Use {\tt log} to find the first and last commit to remove \\~\\
+    Use {\tt log} to find the first and last commit to remove \\~\\
 
-{\tt \$ git revert from\_hash..to\_hash} \\~\\
+    {\tt \$ git revert from\_hash..to\_hash} \\~\\
 
-Use the {\tt --no-edit} flag for git if you don't want to change the default
-revert message
+    Use the {\tt --no-edit} flag for git if you don't want to change the default
+    revert message
 \end{frame}
 
 \section{Branching}
