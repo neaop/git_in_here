@@ -112,11 +112,11 @@
 
 \framebreak
     
-    Git requires a name and email to create commits
+    Git requires a name and email to create commits \\~\\
 
     {\tt \$ git congif --global user.name "Sam"} 
 
-    {\tt \$ git config --global user.email sam@mail.com} 
+    {\tt \$ git config --global user.email sam@mail.com} \\~\\
 
     These settings are not used as login credentials / tokens
 \end{frame}
@@ -211,18 +211,32 @@
     This command is dangerous - you cant recover uncommitted changes
 \end{frame}
 
+\begin{frame}{Reverting a Commit}
+    A main feature of a VCS is the ability to undo previous changes \\~\\
+
+    Git provides this function with the {\tt revert} command \\~\\
+
+    First use the {\tt log} command to display commit hashes \\~\\
+
+    You can then undo the changes that a commit introduced: \\~\\
+    
+    {\tt git revert commit\_hash} \\~\\
+
+    Git will then create a commit inverse of the selected hash \\~\\
+
+\end{frame}
 
 \section{Branching}
 \begin{frame}{\secname}
-    Branches are a key feature of Git
+    Branches are a key feature of Git \\~\\
 
-    They allow different versions of a project to exists simultaneously
+    They allow different versions of a project to exists simultaneously \\~\\
     
-    Allows for parallel development of features
+    Allows for parallel development of features \\~\\
 
-    Branches can be used to experiment or write patches
+    Branches can be used to experiment or write patches \\~\\
 
-    Branches are inexpensive to create/delete
+    Branches are inexpensive to create/delete \\~\\
 \end{frame}
 
 \begin{frame}{Creating Branches}
