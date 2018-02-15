@@ -1,0 +1,422 @@
+\documentclass{beamer}
+\usecolortheme{solarized}
+\usepackage{hyperref}
+\setbeamertemplate{section in toc}[sections numbered]
+
+\title{Git In Here}
+\subtitle{An Unoffical Introduction To Git Version Control Management}
+\author{Sam Dixon\\
+{\tt \href{mailto:s.dixon@napier.ac.uk}{s.dixon@napier.ac.uk}}}
+\date{2018}
+\titlegraphic{\includegraphics[height=3.5cm]{../res/git_icon_orange.png}} 
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Contents}
+    \tableofcontents
+\end{frame}
+
+\section{What is Version Control?}
+\begin{frame}[allowframebreaks]{\secname}
+    Version Control Systems are tools that let you track changes
+
+    A number of different VCSs are available:
+    \begin{itemize}
+        \item Subversion
+        \item Mercurial
+        \item CVS
+        \item Fossil
+        \item Git
+    \end{itemize}
+    Each VCS has its own quirks in style and implementation
+
+\framebreak
+    
+    Common features of VCSs include:
+    \begin{itemize}
+        \item Timeline of changes
+        \item File reversion  
+        \item Branching
+        \item Tagging
+        \item Collaboration
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Why you should use Version control}
+    VCSs can help with common problems like:
+    \begin{itemize}
+        \item Creating multiple copies files ``in case you need the old one''
+        \item Put work onto a USB drive to move it between computers
+        \item Copied code into email/IM to send it to a friend
+        \item Lost work due to loss of power/faulty hard drive
+        \item Overwritten someone else's work when collaborating
+    \end{itemize}
+\end{frame}
+
+\section{What is Git?}
+\begin{frame}[allowframebreaks]{\secname}
+    Git was developed in 2005 by Linus Torvalds.
+
+    It has become one of the most popular VCSs in use today
+
+    Some companies that use Git include:
+    \begin{itemize}
+        \item Google
+        \item Apple
+        \item Microsoft
+        \item Facebook
+        \item Amazon
+        \item Adobe
+        \item Mozilla
+        \item NASA
+    \end{itemize}
+
+\framebreak
+    
+    Git has a number of key features that make it an attractive VCS
+    \begin{itemize}
+        \item Distributed
+        \item Decentralised
+        \item Free (like beer {\it and} like speech)
+        \item Multiplatform
+        \item Speed
+        \item Popularity
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Common Terms}
+    Git has a number of key terms that you should keep in mind
+    \begin{itemize}
+        \item Repository 
+        \item Commit
+        \item Push/Pull
+        \item Tag
+        \item Branch
+        \item Merge
+    \end{itemize}
+    Some of terms may be used in other VCSs, but their functions may not be
+    the same
+\end{frame}
+
+\section{Setting up Git}
+\begin{frame}[allowframebreaks]{\secname}
+    Git can be installed in a number of ways:
+    \begin{itemize}
+        \item Download directly: {\tt \url{https://git-scm.com/downloads}}
+        \item Install a Git visualiser (GitHub Desktop, Sourcetree, Kraken)
+        \item Install via a package manager 
+    \end{itemize}
+
+\framebreak
+    
+    Git requires a name and email to create commits \\~\\
+
+    {\tt \$ git congif --global user.name "Sam"} 
+
+    {\tt \$ git config --global user.email sam@mail.com} \\~\\
+
+    These settings are not used as login credentials / tokens
+\end{frame}
+
+\section{Git Workflow}
+\begin{frame}{\secname}
+    The standard process for using Git is as follows:    
+    \begin{enumerate}
+        \item {\bf Initialise} a Git repo
+        \item Do some work (edit files)
+        \item {\bf Stage} the changes you want to keep
+        \item Finalise the changes in a {\bf Commit}
+        \item Repeat from step 2
+    \end{enumerate}
+\end{frame}
+
+\section{Basic Commands}
+\begin{frame}{Getting a Repo}
+    Git can create a repo in  a new folder:\\~\\
+    {\tt \$ git init project} \\~\\
+    Or in an existing directory: \\~\\
+    {\tt \$ git init} \\~\\
+    It doesn't matter if there are files already in the directory
+\end{frame}
+
+\begin{frame}{Staging Files}
+    Git will not track files by default - you have to specify: \\~\\
+    {\tt \$ git add file\_name} \\~\\
+    You can add multiple files in a single command: \\~\\
+    {\tt \$ git add file\_1 file\_2} \\~\\
+    Or you can use glob wildcards: \\~\\
+    {\tt \$ git add *.txt}
+\end{frame}
+
+\begin{frame}{Checking File State}
+    You can check the state of a repo with the following: \\~\\
+    {\tt \$ git status} \\~\\
+    Files can be in multiple states:
+    \begin{itemize}
+        \item Untracked
+        \item Modified
+        \item Staged
+        \item Deleted\\~\\
+    \end{itemize}
+    You can see how a tracked file has been modified: \\~\\
+    {\tt \$ git diff file\_name}
+\end{frame}
+
+\begin{frame}{Committing Changes}
+    When you are ready to finalise your changes; commit: \\~\\
+    {\tt \$ git commit} \\~\\
+    You can also declare a commit message in the same command: \\~\\
+    {\tt \$ git commit -m "Your message here"}
+\end{frame}
+
+\begin{frame}{Viewing History}
+    Once you have a few commits, you can review them:\\~\\
+    {\tt \$ git log} \\~\\
+    View what changes were made in each commit with the {\tt patch} flag: \\~\\
+    {\tt \$ git log -p} \\~\\
+    There are multiple flags that can alter how the log looks: \\~\\
+    {\tt \$ git log --oneline --graph --decorate}
+\end{frame}
+
+\begin{frame}{Ignoring Files}
+    You may not want to track all the files in repo
+
+    Config files, binary files and build files are often unwanted \\~\\
+
+    You can instruct git to ignore file using a git-ignore file:
+
+    Create a file called .gitignore in the root of your repo
+
+    Add glob patterns for files you want to ignore \\~\\
+
+    {\tt \slash bin} - ignores all files in the bin dir
+
+    {\tt *.o} - ignores all object files \\~\\
+
+    Many sample git-ignore files are available online
+
+\end{frame}
+
+\section{Undoing}
+\begin{frame}{\secname}
+    The {\tt amend} flag allows you to alter a commit
+
+    It adds your staged files to the {\it previous} commit 
+
+    Use this to add files you forgot, or for quick alterations:\\~\\
+    {\tt \$ git commit\\
+    \$ git add forgotten\_file\\
+    \$ git commit --amend} \\~\\
+
+    When you amend a commit you can also change it's message
+\end{frame}
+
+\begin{frame}{Unstaging a File}
+    You may accidentally stage a file that you do not want to commit
+
+    You can unstage the file, without losing the changes you made:\\~\\
+    {\tt \$ git reset HEAD file\_name} \\~\\
+    {\tt HEAD} is Git's name for the tip of the current branch   
+\end{frame}
+
+\begin{frame}{Unmodifying a File}
+    You may edit a file and decide to not keep the modifications
+
+    You revert a file to how it was when it was last committed: \\~\\
+    
+    {\tt \$ git checkout -- file\_name} \\~\\
+
+    This command is dangerous - you cant recover uncommitted changes
+\end{frame}
+
+\begin{frame}{Reverting a Commit}
+    A main feature of a VCS is the ability to undo previous changes \\~\\
+
+    Git provides this function with the {\tt revert} command \\~\\
+
+    First use the {\tt log} command to display commit hashes \\~\\
+
+    You can then undo the changes that a commit introduced: \\~\\
+    
+    {\tt \$ git revert commit\_hash} \\~\\
+
+    Git will then create a commit inverse of the selected hash \\~\\
+\end{frame}
+
+\begin{frame}{Reverting a Series of Commits}
+    You can also undo a series  of commits in a single command \\~\\
+
+    Use {\tt log} to find the first and last commit to remove \\~\\
+
+    {\tt \$ git revert from\_hash..to\_hash} \\~\\
+
+    Use the {\tt --no-edit} flag for git if you don't want to change the default
+    revert message
+\end{frame}
+
+\section{Branching}
+\begin{frame}{\secname}
+    Branches are a key feature of Git \\~\\
+
+    They allow different versions of a project to exists simultaneously \\~\\
+    
+    Allows for parallel development of features \\~\\
+
+    Branches can be used to experiment or write patches \\~\\
+
+    Branches are inexpensive to create/delete \\~\\
+\end{frame}
+
+\begin{frame}{Creating Branches}
+    You can quickly create branches:
+
+    {\tt \$ git branch branch\_name}
+
+    This will create a new branch starting at your current commit\\~\\
+
+    You can list the different branches in a repo:
+
+    {\$ git branch}
+
+    The {\tt status} command will inform you of which branch you are on
+\end{frame}
+
+\begin{frame}{Swapping branches}
+    Once a branch has been created, you need to switch to it: \\~\\
+
+    {\tt \$ git checkout branch\_name} \\~\\
+
+    Git may stop you from swapping if you have uncommitted changes
+\end{frame}
+
+\begin{frame}{Merging Branches}
+    You can add the changes from one branch to another
+
+    Merging will make Git apply the divergent commits from a branch \\~\\
+
+    First, swap to the branch you want to apply the commits to:
+
+    {\tt \$ git checkout master}
+
+    Then merge in your branch with the commits you want:
+
+    {\tt \$ git merge branch\_name}
+\end{frame}
+
+\begin{frame}{Conflicts}
+    Sometimes you will not be able to merge due to conflicts \\~\\
+
+    Conflicts occur when two branches edit a file differently \\~\\
+
+    Conflicts must be resolved before a merge completes \\~\\
+
+    The {\tt status} command informs you which files have problems
+\end{frame}
+
+\begin{frame}{Resolving Conflicts}
+    A simple way to fix a conflict is to simply open the file \\~\\
+
+    Git will automatically tag the conflicting area \\~\\
+
+    You can edit the file to keep the version you want \\~\\
+
+    When you a happy with the file, stage it and {\tt commit}
+\end{frame}
+
+\section{Remotes}
+\begin{frame}[allowframebreaks]{\secname}
+    Git can be used entirely locally\\~\\
+
+    But remotes allow you to collaborate and store projects\\~\\
+
+    A remote is copy of a Git repo ``somewhere else''\\~\\
+
+    A number of services will host repos for you\\~\\
+
+    You can even run your own Git server\\~\\
+
+\framebreak
+
+    There a two ways to set up repo remotes \\~\\
+
+    You can make a local copy of a remote repo: \\~\\
+
+    {\tt \$ git clone remote\_url} \\~\\
+
+    This will copy the  repo and set the url as the default remote
+    \\~\\
+
+    You can also add a remote to a local repo manually: \\~\\
+
+    {\tt \$ git remote add remote\_name remote\_url} \\~\\
+
+    The default name for a repo's primary remote is {\tt origin} - but you can
+    make it what ever you want
+
+\framebreak
+    
+    You can see what remotes are configured to a repo: \\~\\
+
+    {\tt \$ git remote} \\~\\
+
+    To see the url's of theses remotes include the {\tt verbose} flag: \\~\\
+
+    {\tt \$ git remote -v} \\~\\
+
+    You can rename remote:\\~\\
+    {\tt \$ git remote rename remote\_name new\_name} \\~\\
+
+    Or remove it if you dont need to use it any more: \\~\\
+
+    {\tt \$ git remote remove remote\_name}
+
+\framebreak
+
+    You can share local commits to a remote: \\~\\
+
+    {\tt \$ git push remote\_name branch\_name} \\~\\
+
+    The default branch name is {\tt master} \\~\\
+
+    You can query a remote to learn its state: \\~\\
+
+    {\tt \$ git remote show remote\_name} \\~\\
+
+\framebreak
+
+    To get commits from a remote repo, you must fetch it:\\~\\
+
+    {\tt \$ git fetch remote\_name} \\~\\
+
+    Fetching will copy data to a remote branch - without changing your
+    files\\~\\
+    
+    You can inspect these branches with commands like {\tt checkout}
+    and {\tt log}
+    
+\framebreak
+
+    You can add changes from a remote branch with merge: \\~\\
+
+    {\tt \$ git merge remote\_branch\_name} \\~\\
+
+    You can revert theses merges if you don't like them
+    \end{frame}
+
+\section{Useful Links}
+\begin{frame}{\secname}
+     Pro Git Book:
+    \url{https://git-scm.com/book/en/v2} \\~\\   
+    
+    Atlassian Git Tutorials:
+    \url{https://www.atlassian.com/git/tutorials} \\~\\
+
+    GitHub interactive Tutorial:
+    \url{https://try.github.io/levels/1/challenges/1}
+\end{frame}
+
+\end{document}
+
