@@ -220,10 +220,9 @@
 
     You can then undo the changes that a commit introduced: \\~\\
     
-    {\tt git revert commit\_hash} \\~\\
+    {\tt \$ git revert commit\_hash} \\~\\
 
     Git will then create a commit inverse of the selected hash \\~\\
-
 \end{frame}
 
 \section{Branching}
@@ -240,62 +239,59 @@
 \end{frame}
 
 \begin{frame}{Creating Branches}
-You can quickly create branches:
+    You can quickly create branches:
 
-{\tt \$ git branch branch\_name}
+    {\tt \$ git branch branch\_name}
 
-This will create a new branch starting at your current commit\\~\\
+    This will create a new branch starting at your current commit\\~\\
 
-You can list the different branches in a repo:
+    You can list the different branches in a repo:
 
-{\$ git branch}
+    {\$ git branch}
 
-The {\tt status} command will inform you of which branch you are on
+    The {\tt status} command will inform you of which branch you are on
 \end{frame}
 
 \begin{frame}{Swapping branches}
-Once a branch has been created, you need to switch to it: \\~\\
+    Once a branch has been created, you need to switch to it: \\~\\
 
-{\tt \$ git checkout branch\_name} \\~\\
+    {\tt \$ git checkout branch\_name} \\~\\
 
-Git may stop you from swapping if you have uncommitted changes
-
+    Git may stop you from swapping if you have uncommitted changes
 \end{frame}
 
 \begin{frame}{Merging Branches}
-You can add the changes from one branch to another
+    You can add the changes from one branch to another
 
-Merging will make Git apply the divergent commits from a branch \\~\\
+    Merging will make Git apply the divergent commits from a branch \\~\\
 
-First, swap to the branch you want to apply the commits to:
+    First, swap to the branch you want to apply the commits to:
 
-{\tt \$ git checkout master}
+    {\tt \$ git checkout master}
 
-Then merge in your branch with the commits you want:
+    Then merge in your branch with the commits you want:
 
-{\tt \$ git merge branch\_name}
-
+    {\tt \$ git merge branch\_name}
 \end{frame}
 
 \begin{frame}{Conflicts}
-Sometimes you will not be able to merge due to conflicts \\~\\
+    Sometimes you will not be able to merge due to conflicts \\~\\
 
-Conflicts occur when two branches edit a file differently \\~\\
+    Conflicts occur when two branches edit a file differently \\~\\
 
-Conflicts must be resolved before a merge completes \\~\\
+    Conflicts must be resolved before a merge completes \\~\\
 
-The {\tt status} command informs you which files have problems
+    The {\tt status} command informs you which files have problems
 \end{frame}
 
 \begin{frame}{Resolving Conflicts}
-A simple way to fix a conflict is to simply open the file \\~\\
+    A simple way to fix a conflict is to simply open the file \\~\\
 
-Git will automatically tag the conflicting area \\~\\
+    Git will automatically tag the conflicting area \\~\\
 
-You can edit the file to keep the version you want \\~\\
+    You can edit the file to keep the version you want \\~\\
 
-When you a happy with the file, stage it and {\tt commit}
-
+    When you a happy with the file, stage it and {\tt commit}
 \end{frame}
 
 \section{Remotes}
