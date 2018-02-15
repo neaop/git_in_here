@@ -112,15 +112,18 @@
 
 \framebreak
     
-    Git requires a name and email to create commits \\~\\
-    {\tt \$ git congif --global user.name "Sam"} \\~\\
-    {\tt \$ git config --global user.email sam@mail.com} \\~\\
+    Git requires a name and email to create commits
+
+    {\tt \$ git congif --global user.name "Sam"} 
+
+    {\tt \$ git config --global user.email sam@mail.com} 
+
     These settings are not used as login credentials / tokens
 \end{frame}
 
 \section{Git Workflow}
 \begin{frame}{\secname}
-    The standard process for using Git is as follows: \\~\\
+    The standard process for using Git is as follows:    
     \begin{enumerate}
         \item {\bf Initialise} a Git repo
         \item Do some work (edit files)
@@ -134,7 +137,7 @@
 \begin{frame}{Getting a Repo}
     Git can create a repo in  a new folder:\\~\\
     {\tt \$ git init project} \\~\\
-    or in an existing directory: \\~\\
+    Or in an existing directory: \\~\\
     {\tt \$ git init} \\~\\
     It doesn't matter if there are files already in the directory
 \end{frame}
@@ -213,7 +216,7 @@
 \begin{frame}{\secname}
     Branches are a key feature of Git
 
-    They allow different version of the same project to exists simultaneously
+    They allow different versions of a project to exists simultaneously
     
     Allows for parallel development of features
 
@@ -237,25 +240,49 @@ The {\tt status} command will inform you of which branch you are on
 \end{frame}
 
 \begin{frame}{Swapping branches}
-Once a branch has been created, you need to switch to it:
+Once a branch has been created, you need to switch to it: \\~\\
 
-{\tt \$ git checkout branch\_name} 
+{\tt \$ git checkout branch\_name} \\~\\
 
-Git may stop you from checking out if you have uncommitted changes
+Git may stop you from swapping if you have uncommitted changes
 
 \end{frame}
 
 \begin{frame}{Merging Branches}
-If you have commits on one branch and want to copy them to another you will
-need to merge 
+You can add the changes from one branch to another
 
-Merging will make Git apply the divergent commits from one branch to another
+Merging will make Git apply the divergent commits from a branch \\~\\
 
 First, swap to the branch you want to apply the commits to:
-{\$ git checkout master}
+
+{\tt \$ git checkout master}
+
+Then merge in your branch with the commits you want:
+
+{\tt \$ git merge branch\_name}
 
 \end{frame}
 
+\begin{frame}{Conflicts}
+Sometimes you will not be able to merge due to conflicts \\~\\
+
+Conflicts occur when two branches edit a file differently \\~\\
+
+Conflicts must be resolved before a merge completes \\~\\
+
+The {\tt status} command informs you which files have problems
+\end{frame}
+
+\begin{frame}{Resolving Conflicts}
+A simple way to fix a conflict is to simply open the file \\~\\
+
+Git will automatically tag the conflicting area \\~\\
+
+You can edit the file to keep the version you want \\~\\
+
+When you a happy with the file, stage it and {\tt commit}
+
+\end{frame}
 
 \section{Remotes}
 \begin{frame}[allowframebreaks]{\secname}
@@ -319,8 +346,10 @@ First, swap to the branch you want to apply the commits to:
 \framebreak
 
     To get commits from a remote repo, you must fetch it:\\~\\
+
     {\tt \$ git fetch remote\_name} \\~\\
-    Fetching will copy data - but will not change any files
+
+    Fetching will copy data - but will not change any files\\~\\
     
     You can choose to add the remote commits if you want
 \end{frame}
