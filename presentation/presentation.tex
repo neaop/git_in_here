@@ -105,7 +105,7 @@
 \begin{frame}[allowframebreaks]{\secname}
     Git can be installed in a number of ways:
     \begin{itemize}
-        \item Download directly from Git: {\tt \url{https://git-scm.com/downloads}}
+        \item Download directly: {\tt \url{https://git-scm.com/downloads}}
         \item Install a Git visualiser (GitHub Desktop, Sourcetree, Kraken)
         \item Install via a package manager 
     \end{itemize}
@@ -132,7 +132,7 @@
 
 \section{Basic Commands}
 \begin{frame}{Getting a Repo}
-    Git can create a repo in as a new folder:\\~\\
+    Git can create a repo in  a new folder:\\~\\
     {\tt \$ git init project} \\~\\
     or in an existing directory: \\~\\
     {\tt \$ git init} \\~\\
@@ -144,7 +144,7 @@
     {\tt \$ git add file\_name} \\~\\
     You can add multiple files in a single command: \\~\\
     {\tt \$ git add file\_1 file\_2} \\~\\
-    Or you can use wildcards: \\~\\
+    Or you can use glob wildcards: \\~\\
     {\tt \$ git add *.txt}
 \end{frame}
 
@@ -208,18 +208,121 @@
     This command is dangerous - you cant recover uncommitted changes
 \end{frame}
 
+
+\section{Branching}
+\begin{frame}{\secname}
+    Branches are a key feature of Git
+
+    They allow different version of the same project to exists simultaneously
+    
+    Allows for parallel development of features
+
+    Branches can be used to experiment or write patches
+
+    Branches are inexpensive to create/delete
+\end{frame}
+
+\begin{frame}{Creating Branches}
+You can quickly create branches:
+
+{\tt \$ git branch branch\_name}
+
+This will create a new branch starting at your current commit\\~\\
+
+You can list the different branches in a repo:
+
+{\$ git branch}
+
+The {\tt status} command will inform you of which branch you are on
+\end{frame}
+
+\begin{frame}{Swapping branches}
+Once a branch has been created, you need to switch to it:
+
+{\tt \$ git checkout branch\_name} 
+
+Git may stop you from checking out if you have uncommitted changes
+
+\end{frame}
+
+\begin{frame}{Merging Branches}
+If you have commits on one branch and want to copy them to another you will
+need to merge 
+
+Merging will make Git apply the divergent commits from one branch to another
+
+First, swap to the branch you want to apply the commits to:
+{\$ git checkout master}
+
+\end{frame}
+
+
 \section{Remotes}
 \begin{frame}[allowframebreaks]{\secname}
-    Git can be used entirely locally
+    Git can be used entirely locally\\~\\
 
-    But remotes allow you to collaborate and store projects
+    But remotes allow you to collaborate and store projects\\~\\
 
-    A remote is copy of a Git repo ``somewhere else''
+    A remote is copy of a Git repo ``somewhere else''\\~\\
 
-    A number of services will host repos for you
+    A number of services will host repos for you\\~\\
 
-    You can even run your own Git server
+    You can even run your own Git server\\~\\
 
+\framebreak
+
+    There a two ways to set up repo remotes \\~\\
+
+    You can make a local copy of a remote repo: \\~\\
+
+    {\tt \$ git clone remote\_url} \\~\\
+
+    This will copy the  repo and set the url as the default remote
+    \\~\\
+
+    You can also add a remote to a local repo manually: \\~\\
+
+    {\tt \$ git remote add remote\_name remote\_url} \\~\\
+
+    The default name for a repo's primary remote is {\tt origin} - but you can
+    make it what ever you want
+
+\framebreak
+    
+    You can see what remotes are configured to a repo: \\~\\
+
+    {\tt \$ git remote} \\~\\
+
+    To see the url's of theses remotes include the {\tt verbose} flag: \\~\\
+
+    {\tt \$ git remote -v} \\~\\
+
+    You can rename remote:\\~\\
+    {\tt \$ git remote rename remote\_name new\_name} \\~\\
+
+    Or remove it if you dont need to use it any more: \\~\\
+
+    {\tt \$ git remote remove remote\_name}
+
+\framebreak
+
+    You can share local commits to a remote: \\~\\
+
+    {\tt \$ git push remote\_name branch\_name} \\~\\
+
+    The default branch name is {\tt master} \\~\\
+
+    You can query a remote to learn its state: \\~\\
+
+    {\tt \$ git remote show remote\_name} \\~\\
+
+\framebreak
+
+    To get commits from a remote repo, you must fetch it:\\~\\
+    {\tt \$ git fetch remote\_name} \\~\\
+    Fetching will copy data - but will not change any files
+    
+    You can choose to add the remote commits if you want
 \end{frame}
 
 \section{Tagging}
@@ -238,13 +341,7 @@
     {\tt \$ git show tag\_name}
 \end{frame}
 
-\section{Branching}
-\begin{frame}{\secname}
-    Branches a key feature of Git - They allow different version of the same
-    project to exists simultaneously
-    Branches can be used to experiment or write patches
-    Branches are inexpensive to create / delete
-\end{frame}
+
 
 \end{document}
 
