@@ -93,13 +93,11 @@
         \item Repository 
         \item Commit
         \item Push/Pull
-        \item Tag
         \item Branch
         \item Merge
     \end{itemize}
-    Some of terms may be used in other VCSs, but their functions may not be
-    the same
-\end{frame}
+    Some of these terms are shared with other VCSs
+    \end{frame}
 
 \section{Setting up Git}
 \begin{frame}[allowframebreaks]{\secname}
@@ -217,7 +215,7 @@
 \begin{frame}{Unstaging a File}
     You may accidentally stage a file that you do not want to commit
 
-    You can unstage the file, without losing the changes you made:\\~\\
+    You can unstage the file without losing the changes you made:\\~\\
     {\tt \$ git reset HEAD file\_name} \\~\\
     {\tt HEAD} is Git's name for the tip of the current branch   
 \end{frame}
@@ -268,20 +266,23 @@
     Branches can be used to experiment or write patches \\~\\
 
     Branches are inexpensive to create/delete \\~\\
+
+    All repos start with a branch named {\tt master}
 \end{frame}
 
 \begin{frame}{Creating Branches}
-    You can quickly create branches:
+    You can quickly create branches: \\~\\
 
-    {\tt \$ git branch branch\_name}
+    {\tt \$ git branch branch\_name} \\~\\
 
     This will create a new branch starting at your current commit\\~\\
 
-    You can list the different branches in a repo:
+    You can list the different branches in a repo: \\~\\
 
-    {\$ git branch}
+    {\$ git branch} \\~\\
 
-    The {\tt status} command will inform you of which branch you are on
+    The {\tt status} command will inform you of which branch you are on \\~\\
+
 \end{frame}
 
 \begin{frame}{Swapping branches}
@@ -297,11 +298,11 @@
 
     Merging will make Git apply the divergent commits from a branch \\~\\
 
-    First, swap to the branch you want to apply the commits to:
+    First, swap to the branch you want to apply the commits to: \\~\\
 
-    {\tt \$ git checkout master}
+    {\tt \$ git checkout master} \\~\\
 
-    Then merge in your branch with the commits you want:
+    Then merge in your branch with the commits you want: \\~\\
 
     {\tt \$ git merge branch\_name}
 \end{frame}
@@ -353,9 +354,8 @@
 
     {\tt \$ git remote add remote\_name remote\_url} \\~\\
 
-    The default name for a repo's primary remote is {\tt origin} - but you can
-    make it what ever you want
-
+    The default name for a repo's primary remote is {\tt origin}
+    
 \framebreak
     
     You can see what remotes are configured to a repo: \\~\\
@@ -391,11 +391,9 @@
 
     {\tt \$ git fetch remote\_name} \\~\\
 
-    Fetching will copy data to a remote branch - without changing your
-    files\\~\\
-    
-    You can inspect these branches with commands like {\tt checkout}
-    and {\tt log}
+    Fetching will copy data to a branch - local files are unchanged \\~\\
+
+    You can inspect these branches with {\tt checkout} and {\tt log}
     
 \framebreak
 
@@ -404,7 +402,7 @@
     {\tt \$ git merge remote\_branch\_name} \\~\\
 
     You can revert theses merges if you don't like them
-    \end{frame}
+\end{frame}
 
 \section{Useful Links}
 \begin{frame}{\secname}
@@ -415,7 +413,10 @@
     \url{https://www.atlassian.com/git/tutorials} \\~\\
 
     GitHub interactive Tutorial:
-    \url{https://try.github.io/levels/1/challenges/1}
+    \url{https://try.github.io/levels/1/challenges/1} \\~\\
+
+    Sample git-ignore files:
+    \url{https://github.com/github/gitignore}
 \end{frame}
 
 \end{document}
